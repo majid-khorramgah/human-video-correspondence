@@ -1,0 +1,43 @@
+{
+  "analysis": {
+    "name": "Temporal Motion Analysis",
+    "stage": "02_temporal_redundancy/04_motion_analysis",
+    "method": "Dense Optical Flow (OpenCV Farneback)"
+  },
+  "input": {
+    "master_index": "F:\\human-video-correspondence\\01_dataset_audit\\results\\integrity\\master_index.csv",
+    "image_modality": "Img_HR",
+    "splits": [
+      "train",
+      "val",
+      "test"
+    ]
+  },
+  "dataset": {
+    "frames_available": 500507,
+    "videos": 547,
+    "shards": 6
+  },
+  "configuration": {
+    "lags": [
+      1,
+      2,
+      5,
+      10
+    ],
+    "sampling_mode": "per_video",
+    "max_pairs_per_video": 50,
+    "image_size": 224,
+    "seed": 42
+  },
+  "results": {
+    "successful_comparisons": 109389,
+    "failed_comparisons": 0
+  },
+  "interpretation": {
+    "meaning": "Optical-flow magnitude measures image-space displacement between two frames.",
+    "limitation": "High motion magnitude does not necessarily imply semantic motion. Camera motion, illumination changes, occlusion, and background movement can contribute.",
+    "research_relevance": "The analysis quantifies how much temporal information changes as frame distance increases."
+  },
+  "runtime_seconds": 5988.7652888298035
+}
