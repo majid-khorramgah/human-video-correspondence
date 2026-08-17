@@ -1,0 +1,13 @@
+﻿metric,value
+total_master_index_rows,500507
+malformed_rows,0
+total_videos,547
+total_frames,500507
+frame_id_min,0
+frame_id_max,500506
+frames_per_video_mean,915.0036563071297
+frames_per_video_median,815
+frames_per_video_min,52
+frames_per_video_max,3462
+videos_spanning_multiple_shards,5
+videos_spanning_multiple_splits,0

@@ -1,0 +1,33 @@
+{
+  "dataset_root": "F:\\PhySense-Human",
+  "num_shards": 6,
+  "num_hr_frames": 500507,
+  "num_videos": 547,
+  "num_missing_corresponding_files": 0,
+  "num_files_without_hr_counterpart": 0,
+  "num_duplicate_frame_records": 0,
+  "num_filename_parse_errors": 0,
+  "num_video_split_leakage": 0,
+  "num_frame_split_overlap": 0,
+  "num_videos_spanning_multiple_shards": 5,
+  "num_videos_with_frame_gaps": 0,
+  "num_unreadable_hr_images": 0,
+  "checks": {
+    "shards_found": true,
+    "all_split_directories_present": true,
+    "all_modality_directories_present": true,
+    "all_filenames_parse_correctly": true,
+    "no_missing_corresponding_files": true,
+    "no_files_without_hr_counterpart": true,
+    "no_duplicate_frame_identities": true,
+    "no_frame_split_overlap": true,
+    "no_video_split_overlap": true,
+    "all_hr_images_readable": true
+  },
+  "core_integrity_pass": true,
+  "notes": {
+    "cross_shard_videos": "Videos appearing in multiple shards are not considered an error. Shards may split long videos across storage boundaries.",
+    "incomplete_final_shard": "The final shard may contain fewer frames because extraction ended there. This is not considered an integrity failure.",
+    "extension_matching": "Frame correspondence is determined by video_id and frame_id, not by filename extension."
+  }
+}

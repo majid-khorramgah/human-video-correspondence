@@ -1,0 +1,6 @@
+﻿video_id,frames,splits,shards,num_shards,first_frame_id,last_frame_id,frame_id_span,frame_id_gaps,missing_frame_ids,min_frame_step,max_frame_step,continuous,extensions
+nVCvscVOQJM,1150,test,Dataset_Shard_0300000_0399999|Dataset_Shard_0400000_0499999,2,399884,401033,1150,0,0,1,1,True,
+b7nnK-iWh_s,1149,train,Dataset_Shard_0200000_0299999|Dataset_Shard_0300000_0399999,2,299970,301118,1149,0,0,1,1,True,
+NTTKigtDFOM,1044,val,Dataset_Shard_0100000_0199999|Dataset_Shard_0200000_0299999,2,199899,200942,1044,0,0,1,1,True,
+zsbl6oa5pGQ,940,train,Dataset_Shard_0400000_0499999|Dataset_Shard_0500000_0599999,2,499567,500506,940,0,0,1,1,True,
+B3np71w5K1c,619,train,Dataset_Shard_0000000_0099999|Dataset_Shard_0100000_0199999,2,99693,100311,619,0,0,1,1,True,

@@ -1,0 +1,45 @@
+{
+  "analysis": "temporal_structure",
+  "configuration": {
+    "expected_frame_interval_seconds": 1.0
+  },
+  "dataset": {
+    "num_frames": 500507,
+    "num_videos": 547,
+    "num_shards": 6
+  },
+  "splits": {
+    "frames": {
+      "test": 40600,
+      "train": 419203,
+      "val": 40704
+    },
+    "videos": {
+      "test": 41,
+      "train": 455,
+      "val": 51
+    }
+  },
+  "temporal_structure": {
+    "total_transitions": 499960,
+    "expected_transitions": 499960,
+    "adjacent_transitions": 499960,
+    "global_continuity_ratio": 1.0,
+    "videos_with_frame_id_gaps": 0,
+    "total_temporal_gap_locations": 0
+  },
+  "video_statistics": {
+    "mean_frames_per_video": 915.0036563071297,
+    "median_frames_per_video": 815.0,
+    "min_frames_per_video": 52,
+    "max_frames_per_video": 3462,
+    "mean_estimated_duration_seconds": 915.0036563071297,
+    "median_estimated_duration_seconds": 815.0,
+    "videos_spanning_multiple_shards": 5
+  },
+  "integrity_checks": {
+    "duplicate_temporal_identities": 0,
+    "videos_with_frame_id_gaps": 0,
+    "temporal_structure_pass": true
+  }
+}

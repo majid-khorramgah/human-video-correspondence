@@ -1,0 +1,173 @@
+{
+    "dataset": {
+        "name": "PhySense-Human",
+        "dataset_root": "F:\\PhySense-Human",
+        "master_index": "F:\\PhySense-Human\\01_dataset_audit\\results\\integrity\\master_index.csv",
+        "total_frames": 500507,
+        "total_videos": 547,
+        "total_shards": 6
+    },
+    "source_pipeline": {
+        "source_type": "video",
+        "sampling": "approximately 1 frame per second",
+        "sampling_implementation": "frame_idx % fps == 0",
+        "hr_resolution": "1920x1080",
+        "lr_resolution": "640x360",
+        "hr_resize_interpolation": "INTER_CUBIC",
+        "lr_generated_from": "saved HR representation / modality",
+        "hr_image_format": "JPEG",
+        "hr_image_quality": 95,
+        "mask_format": "PNG",
+        "split_policy": "MD5(original filename) modulo 100",
+        "split_target": {
+            "train": "80%",
+            "val": "10%",
+            "test": "10%"
+        },
+        "shard_size": 100000
+    },
+    "metadata_limitations": {
+        "exact_original_timestamp_available": false,
+        "original_video_fps_stored": false,
+        "original_video_duration_stored": false,
+        "original_video_resolution_stored": false,
+        "original_codec_stored": false,
+        "note": "The generation pipeline uses the source video's FPS internally for approximately 1 FPS sampling, but the original FPS and exact timestamps are not persisted in the dataset filenames/index."
+    },
+    "splits": {
+        "train": {
+            "split": "train",
+            "frames": 419203,
+            "videos": 455,
+            "mean_frames_per_video": 921.3252747252748,
+            "percentage_of_frames": 83.75567174884667,
+            "percentage_of_videos": 83.18098720292505
+        },
+        "val": {
+            "split": "val",
+            "frames": 40704,
+            "videos": 51,
+            "mean_frames_per_video": 798.1176470588235,
+            "percentage_of_frames": 8.132553590659072,
+            "percentage_of_videos": 9.323583180987203
+        },
+        "test": {
+            "split": "test",
+            "frames": 40600,
+            "videos": 41,
+            "mean_frames_per_video": 990.2439024390244,
+            "percentage_of_frames": 8.111774660494259,
+            "percentage_of_videos": 7.495429616087751
+        }
+    },
+    "shards": {
+        "Dataset_Shard_0000000_0099999": {
+            "shard": "Dataset_Shard_0000000_0099999",
+            "frames": 100000,
+            "videos": 110,
+            "percentage_of_frames": 19.979740543089306,
+            "expected_capacity": 100000,
+            "capacity_utilization_percent": 100.0
+        },
+        "Dataset_Shard_0100000_0199999": {
+            "shard": "Dataset_Shard_0100000_0199999",
+            "frames": 100000,
+            "videos": 108,
+            "percentage_of_frames": 19.979740543089306,
+            "expected_capacity": 100000,
+            "capacity_utilization_percent": 100.0
+        },
+        "Dataset_Shard_0200000_0299999": {
+            "shard": "Dataset_Shard_0200000_0299999",
+            "frames": 100000,
+            "videos": 112,
+            "percentage_of_frames": 19.979740543089306,
+            "expected_capacity": 100000,
+            "capacity_utilization_percent": 100.0
+        },
+        "Dataset_Shard_0300000_0399999": {
+            "shard": "Dataset_Shard_0300000_0399999",
+            "frames": 100000,
+            "videos": 112,
+            "percentage_of_frames": 19.979740543089306,
+            "expected_capacity": 100000,
+            "capacity_utilization_percent": 100.0
+        },
+        "Dataset_Shard_0400000_0499999": {
+            "shard": "Dataset_Shard_0400000_0499999",
+            "frames": 100000,
+            "videos": 109,
+            "percentage_of_frames": 19.979740543089306,
+            "expected_capacity": 100000,
+            "capacity_utilization_percent": 100.0
+        },
+        "Dataset_Shard_0500000_0599999": {
+            "shard": "Dataset_Shard_0500000_0599999",
+            "frames": 507,
+            "videos": 1,
+            "percentage_of_frames": 0.10129728455346279,
+            "expected_capacity": 100000,
+            "capacity_utilization_percent": 0.507
+        }
+    },
+    "video_statistics": {
+        "frames_per_video": {
+            "count": 547,
+            "min": 52,
+            "max": 3462,
+            "mean": 915.0036563071297,
+            "median": 815,
+            "std": 480.85063514561386,
+            "p01": 181.06,
+            "p05": 345.3,
+            "p25": 588.5,
+            "p50": 815.0,
+            "p75": 1159.5,
+            "p95": 1790.4999999999995,
+            "p99": 2491.0599999999986
+        },
+        "videos_spanning_multiple_shards": 5,
+        "videos_spanning_multiple_splits": 0
+    },
+    "frame_statistics": {
+        "count": 500507,
+        "min": 0,
+        "max": 500506,
+        "mean": 250253,
+        "median": 250253,
+        "std": 144484.06992814122,
+        "p01": 5005.06,
+        "p05": 25025.300000000003,
+        "p25": 125126.5,
+        "p50": 250253.0,
+        "p75": 375379.5,
+        "p95": 475480.69999999995,
+        "p99": 495500.94
+    },
+    "frame_extensions": {
+        ".jpg": 500507
+    },
+    "modality_coverage": {
+        "Img_HR": 100.0,
+        "Img_LR": 100.0,
+        "Mask_Cloth_HR": 100.0,
+        "Mask_Cloth_LR": 100.0,
+        "Mask_Full_HR": 100.0,
+        "Mask_Full_LR": 100.0,
+        "Mask_Skin_HR": 100.0,
+        "Mask_Skin_LR": 100.0
+    },
+    "resolution_analysis": {
+        "sample_size_per_modality": 5000,
+        "PIL_available": true
+    },
+    "file_size_analysis": {
+        "performed": false
+    },
+    "youtube_metadata": {
+        "available": false
+    },
+    "runtime_seconds": 1250.8633201122284,
+    "runtime_minutes": 20.847722001870473,
+    "generated_at": "2026-08-15 17:57:32"
+}

@@ -1,0 +1,9 @@
+﻿modality,dataset_frames,present,missing,coverage_percent
+Img_HR,500507,500507,0,100.0
+Img_LR,500507,500507,0,100.0
+Mask_Cloth_HR,500507,500507,0,100.0
+Mask_Cloth_LR,500507,500507,0,100.0
+Mask_Full_HR,500507,500507,0,100.0
+Mask_Full_LR,500507,500507,0,100.0
+Mask_Skin_HR,500507,500507,0,100.0
+Mask_Skin_LR,500507,500507,0,100.0
