@@ -130,27 +130,27 @@ The next research question is therefore not simply whether redundancy exists, bu
 
 ### Correspondence Consistency Distribution
 
-![Correspondence consistency distribution](figures/correspondence_consistency_distribution.png)
+![Correspondence consistency distribution](results/05_temporal_correspondence/figures/correspondence_consistency_distribution.png)
 
 ### Motion Across Temporal Distance
 
-![Correspondence motion by temporal distance](figures/correspondence_motion_by_temporal_distance.png)
+![Correspondence motion by temporal distance](results/05_temporal_correspondence/figures/correspondence_motion_by_temporal_distance.png)
 
 ### Flow Magnitude Distribution
 
-![Flow magnitude distribution](figures/flow_magnitude_distribution.png)
+![Flow magnitude distribution](results/05_temporal_correspondence/figures/flow_magnitude_distribution.png)
 
 ### Forward-Backward Consistency
 
-![Forward-backward consistency](figures/forward_backward_consistency.png)
+![Forward-backward consistency](results/05_temporal_correspondence/figures/forward_backward_consistency.png)
 
 ### Human-Region Correspondence
 
-![Human correspondence consistency](figures/human_correspondence_consistency.png)
+![Human correspondence consistency](results/05_temporal_correspondence/figures/human_correspondence_consistency.png)
 
 ### Video Motion Distribution
 
-![Video motion distribution](figures/video_motion_distribution.png)
+![Video motion distribution](results/05_temporal_correspondence/figures/video_motion_distribution.png)
 
 ### Warping Error Across Temporal Distance
 
