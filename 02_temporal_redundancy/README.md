@@ -115,4 +115,76 @@ to
 
 **Using redundancy to decide what to sample.**
 
+<<<<<<< HEAD
 That transition—from descriptive temporal redundancy to a **principled, content-adaptive sampling rule**—is the main direction I would like to investigate.
+=======
+The next research question is therefore not simply whether redundancy exists, but:
+
+> **Can we identify a principled temporal sampling interval beyond which additional frames provide substantially new information rather than redundant observations?**
+
+---
+
+## Visual Evidence
+
+### Correspondence Consistency Distribution
+
+![Correspondence consistency distribution](results/05_temporal_correspondence/figures/correspondence_consistency_distribution.png)
+
+### Motion Across Temporal Distance
+
+![Correspondence motion by temporal distance](results/05_temporal_correspondence/figures/correspondence_motion_by_temporal_distance.png)
+
+### Flow Magnitude Distribution
+
+![Flow magnitude distribution](results/05_temporal_correspondence/figures/flow_magnitude_distribution.png)
+
+### Forward-Backward Consistency
+
+![Forward-backward consistency](results/05_temporal_correspondence/figures/forward_backward_consistency.png)
+
+### Human-Region Correspondence
+
+![Human correspondence consistency](results/05_temporal_correspondence/figures/human_correspondence_consistency.png)
+
+### Video Motion Distribution
+
+![Video motion distribution](results/05_temporal_correspondence/figures/video_motion_distribution.png)
+
+### Warping Error Across Temporal Distance
+
+![Warping error by temporal distance](results/05_temporal_correspondence/figures/warping_error_by_temporal_distance.png)
+
+---
+
+## Reproducibility
+
+The final stage produces frame-level, video-level, and aggregate statistics:
+
+* `correspondence_summary.csv`
+* `correspondence_summary.json`
+* `video_correspondence_statistics.csv`
+* `frame_pair_correspondence_statistics.csv`
+* `correspondence_errors.csv`
+
+The large frame-pair CSV is kept outside version control because of its size.
+
+---
+
+## Research Direction
+
+The long-term objective is to move from **measuring temporal redundancy** to **using temporal redundancy to design more efficient video representations and sampling strategies**.
+
+The central research direction is:
+
+**Temporal redundancy → measurable correspondence decay → principled temporal sampling → more efficient video understanding**
+
+---
+
+## Project Status
+
+**Five-stage analysis pipeline completed.**
+
+The current results provide quantitative evidence that temporal correspondence systematically degrades with increasing temporal distance in human videos.
+
+The next step is to determine whether these measurements can be converted into a **principled criterion for temporal sampling and redundancy-aware video representation.**
+>>>>>>> 299f65d890a7b5cc199c7b3982b74733bbe004fc
