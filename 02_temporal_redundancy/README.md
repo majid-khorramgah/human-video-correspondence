@@ -2,13 +2,13 @@
 
 ## Research Question
 
-> **When can information from one frame of a human video be reliably related to information in neighboring frames?**
+> **When and how can visual information be reliably transferred across temporally separated frames of a human video?**
 
 ## Project Goal
 
-This project investigates whether the temporal information present in human videos can be reliably exploited across frames, particularly under **motion and increasing temporal distance**.
+This project investigates whether temporal information in human videos can be reliably exploited across frames, particularly under **motion and increasing temporal distance**.
 
-The study uses **PhySense-Human**, a diverse human try-on video dataset covering a wide range of clothing and seasonal styles, containing **500,507 frames across 547 videos**. The dataset provides continuous temporal sequences with **100% adjacent continuity and 0 detected frame-ID gaps**.
+The study uses **PhySense-Human**, a diverse human try-on video dataset covering a wide range of clothing and seasonal styles, with **500,507 frames across 547 videos**. Frames are sampled at approximately **1 frame per second** from the original videos (e.g., frame 0 → frame 30 → frame 60 in a 30 FPS video), while preserving their temporal order.
 
 ---
 
@@ -32,12 +32,4 @@ We progressively analyzed:
 
 As temporal distance increases, **visual similarity decreases, temporal difference and motion increase, and cross-frame correspondence becomes less reliable.**
 
-This suggests that the important question is not simply whether neighboring frames are similar, but **when information from another frame can be trusted and effectively used**.
-
----
-
-## Next Direction
-
-The next step is to investigate how this temporal information can be exploited in a downstream human-video task—for example, whether information from neighboring frames can help recover information that is missing or degraded in a target frame.
-
-The specific reconstruction or modeling strategy is intentionally left open at this stage.
+The central challenge is therefore to determine **what visual information can be reliably transferred across time, under what conditions, and what this enables.**
