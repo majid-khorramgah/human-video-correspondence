@@ -2,7 +2,7 @@
 
 ## Research Question
 
-> **Can temporal redundancy in human videos be quantified through correspondence decay, and can this signal be converted into a principled, content-adaptive temporal sampling strategy?**
+> Can temporal redundancy in human videos be quantified through correspondence decay, and can this signal be converted into a principled, content-adaptive temporal sampling strategy?
 
 ## Motivation
 
@@ -10,35 +10,21 @@ Video models process sequences containing many highly correlated frames, yet the
 
 A fixed sampling rate treats all parts of a video similarly, despite differences in motion, pose change, and scene dynamics.
 
-This project asks whether temporal redundancy can be measured empirically and whether that measurement can eventually be used to determine when an additional frame is sufficiently informative to retain.
+This project asks whether temporal redundancy can instead be measured empirically and used to determine when an additional frame is sufficiently informative to retain.
 
 The central hypothesis is:
 
 **Temporal distance → correspondence decay → increasing visual change → adaptive sampling opportunity**
 
----
-
-## Dataset
-
-The study uses a dataset of **552 human videos**, divided into **train, validation, and test splits**.
-
-The videos contain human-centric visual content and are analyzed temporally rather than as independent images. For the correspondence experiment, frames are processed at **224 × 224** resolution, and frame pairs are sampled within each video at temporal gaps of **1, 2, 5, and 10 frames**.
-
-The final correspondence analysis contains **110,291 successfully processed frame pairs**, with **0 failed pairs**.
-
-The purpose of using this dataset is not to classify the videos, but to study how **visual correspondence and temporal redundancy change as the temporal distance between frames increases**.
-
----
-
 ## Approach
 
-I built a five-stage empirical pipeline:
+I built a five-stage empirical pipeline to progressively characterize temporal redundancy:
 
 **Temporal Structure → Frame Similarity → Temporal Difference → Motion → Temporal Correspondence**
 
-The first four stages characterize temporal variation at progressively more specific levels. The final stage tests whether measurable visual correspondence systematically degrades as the temporal gap between frames increases.
+The first four stages characterize temporal variation at increasingly specific levels. The final stage tests whether measurable visual correspondence systematically degrades as the temporal gap between frames increases.
 
-The correspondence analysis evaluates:
+The correspondence analysis evaluates temporal gaps of **1, 2, 5, and 10 frames** using:
 
 - Optical-flow magnitude
 - Forward-backward consistency
@@ -46,10 +32,6 @@ The correspondence analysis evaluates:
 - Valid-flow ratio
 - Human-region motion
 - Human-region correspondence consistency
-
-Temporal gaps of **1, 2, 5, and 10 frames** are evaluated across the train, validation, and test splits.
-
----
 
 ## Preliminary Evidence
 
@@ -59,9 +41,9 @@ The final correspondence experiment covered:
 - **110,291 successful frame pairs**
 - **0 failed pairs**
 - Train / validation / test splits
-- **224 × 224** frame resolution
+- **224 × 224** frames
 - Temporal gaps of **1, 2, 5, and 10 frames**
-- Fixed random seed: **42**
+- Fixed seed: **42**
 
 The observed trend is consistent across all three splits.
 
@@ -69,22 +51,20 @@ The observed trend is consistent across all three splits.
 
 | Temporal Gap | Flow Magnitude | FB Consistency | Warping Error | Human-Region Consistency |
 |-------------:|---------------:|---------------:|--------------:|-------------------------:|
-| 1 | 3.16 | 0.815 | 12.94 | 0.713 |
-| 2 | 3.84 | 0.761 | 17.31 | 0.638 |
-| 5 | 4.61 | 0.700 | 23.06 | 0.565 |
-| 10 | 5.17 | 0.656 | 27.40 | 0.521 |
+| 1            | 3.16           | 0.815          | 12.94         | 0.713                    |
+| 2            | 3.84           | 0.761          | 17.31         | 0.638                    |
+| 5            | 4.61           | 0.700          | 23.06         | 0.565                    |
+| 10           | 5.17           | 0.656          | 27.40         | 0.521                    |
 
 As temporal distance increases:
 
 **motion increases → warping error increases → correspondence consistency decreases.**
 
-The same qualitative behavior is observed when correspondence is evaluated specifically within the human region, suggesting that the observed trend is not explained solely by background motion.
-
----
+The same qualitative behavior is observed when correspondence is evaluated specifically within the human region, indicating that the trend is not attributable solely to background motion.
 
 ## What the Results Suggest
 
-The current results provide reproducible evidence of a systematic **correspondence-decay pattern with increasing temporal distance**.
+The current results provide evidence of a systematic **correspondence decay with increasing temporal distance**.
 
 Importantly, the effect is observed across multiple complementary measurements rather than a single similarity metric:
 
@@ -95,13 +75,11 @@ Importantly, the effect is observed across multiple complementary measurements r
 
 This makes correspondence decay a potentially useful **measurable signal of temporal redundancy**.
 
-However, the current experiment does **not yet establish an optimal temporal sampling rule**.
+However, the current experiment does not yet establish an optimal sampling rule.
 
-This leads to the central open question:
+That leads to the central next question:
 
-> **When does an additional frame provide enough new information that it should be retained rather than skipped?**
-
----
+> When does an additional frame provide enough new information that it should be retained rather than skipped?
 
 ## Core Research Hypothesis
 
@@ -111,9 +89,7 @@ A useful sampling criterion may depend on observable video dynamics such as:
 
 **Motion → Pose Change → Scene Dynamics → Correspondence Reliability**
 
-Rather than prescribing a fixed sampling interval, the goal is to determine whether measurable correspondence decay can identify when the current frame has become sufficiently different from the previously retained frame.
-
----
+Rather than prescribing a fixed interval, the goal is to determine whether measurable correspondence decay can identify when the current frame has become sufficiently different from the previously retained frame.
 
 ## Next Research Step
 
@@ -121,19 +97,15 @@ The next experiment is to connect **correspondence decay** to **marginal informa
 
 Specifically:
 
-> **Can correspondence-based measurements predict whether retaining an additional frame contributes sufficiently new information to justify its computational cost?**
+> Can correspondence-based measurements predict whether retaining an additional frame contributes sufficiently new information to justify its computational cost?
 
 If so, correspondence decay could provide the basis for a **content-adaptive temporal sampling criterion**, potentially reducing redundant frames while preserving meaningful temporal dynamics.
-
-The broader goal is to move from measuring temporal redundancy to using it as a principle for more efficient video representation and video understanding.
-
----
 
 ## Current Status
 
 **Five-stage empirical pipeline completed.**
 
-The current study provides reproducible evidence of correspondence decay across temporal distances in a dataset of 552 human videos.
+The current study establishes a reproducible correspondence-decay pattern across temporal distances in a dataset of 552 human videos.
 
 The open research problem is now to move from:
 
