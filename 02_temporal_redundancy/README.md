@@ -2,7 +2,7 @@
 
 ## Research Question
 
-> **When and how can visual information be reliably transferred across temporally separated frames of a human video?**
+> **Under what conditions can visual information from one frame remain useful in another frame of a human video?**
 
 ## Project Goal
 
