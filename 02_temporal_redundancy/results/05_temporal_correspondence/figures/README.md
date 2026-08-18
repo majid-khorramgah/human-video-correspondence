@@ -50,7 +50,7 @@ The generated results are organized as follows:
   * `video_correspondence_statistics.csv`
   * `frame_pair_correspondence_statistics.csv`
   * `correspondence_errors.csv`
-* `figures/`
+* `figure/`
 
   * `correspondence_consistency_distribution.png`
   * `correspondence_motion_by_temporal_distance.png`
@@ -66,7 +66,7 @@ The generated results are organized as follows:
 
 ## 1. Motion Magnitude by Temporal Distance
 
-![Mean Motion Magnitude by Temporal Distance](figures/correspondence_motion_by_temporal_distance.png)
+![Mean Motion Magnitude by Temporal Distance](correspondence_motion_by_temporal_distance.png)
 
 This figure shows the average optical-flow magnitude as a function of temporal distance.
 
@@ -87,7 +87,7 @@ This behavior indicates that frames become progressively more displaced in the i
 
 ## 2. Forward-Backward Correspondence Consistency
 
-![Forward-Backward Consistency](figures/forward_backward_consistency.png)
+![Forward-Backward Consistency](forward_backward_consistency.png)
 
 Forward-backward consistency evaluates whether optical flow estimated from the source frame to the target frame is compatible with flow estimated in the reverse direction.
 
@@ -108,7 +108,7 @@ The decrease indicates that correspondence becomes less self-consistent as the t
 
 ## 3. Warping Error by Temporal Distance
 
-![Warping Error by Temporal Distance](figures/warping_error_by_temporal_distance.png)
+![Warping Error by Temporal Distance](warping_error_by_temporal_distance.png)
 
 Photometric warping error measures the difference between the target image and the source image warped according to the estimated optical flow.
 
@@ -127,7 +127,7 @@ The increasing error provides an additional indication that frame-to-frame corre
 
 ## 4. Human-Region Correspondence Consistency
 
-![Human-region Correspondence Consistency](figures/human_correspondence_consistency.png)
+![Human-region Correspondence Consistency](human_correspondence_consistency.png)
 
 This analysis restricts correspondence evaluation to the human region using the available full-human masks.
 
@@ -148,7 +148,7 @@ This is particularly relevant for human-video correspondence because it indicate
 
 ## 5. Pair-Level Correspondence Consistency Distribution
 
-![Pair-level Correspondence Consistency Distribution](figures/correspondence_consistency_distribution.png)
+![Pair-level Correspondence Consistency Distribution](correspondence_consistency_distribution.png)
 
 This figure presents the distribution of pair-level forward-backward consistency across temporal distances.
 
@@ -160,7 +160,7 @@ The results demonstrate that correspondence quality is not uniform across all fr
 
 ## 6. Pair-Level Flow Magnitude Distribution
 
-![Pair-level Flow Magnitude Distribution](figures/flow_magnitude_distribution.png)
+![Pair-level Flow Magnitude Distribution](flow_magnitude_distribution.png)
 
 This figure shows the distribution of optical-flow magnitudes across individual frame pairs.
 
@@ -172,7 +172,7 @@ This complements the aggregate motion analysis by showing the variability of est
 
 ## 7. Video-Level Motion Magnitude Distribution
 
-![Video-Level Motion Magnitude Distribution](figures/video_motion_distribution.png)
+![Video-Level Motion Magnitude Distribution](video_motion_distribution.png)
 
 This figure summarizes the distribution of mean motion magnitude at the video level.
 
