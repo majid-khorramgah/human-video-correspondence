@@ -32,4 +32,4 @@ We progressively analyzed:
 
 As temporal distance increases, **visual similarity decreases, temporal difference and motion increase, and cross-frame correspondence becomes less reliable.**
 
-The central challenge is therefore to determine **what visual information can be reliably transferred across time, under what conditions, and what this enables.**
+This raises a broader question: **what visual information can be reliably shared across time in human video, and under what conditions?**
