@@ -2,190 +2,117 @@
 
 ## Research Question
 
-**How much temporal redundancy exists in human videos, and how does the reliability of visual correspondence change as temporal distance increases?**
+> Can temporal redundancy in human videos be quantified through correspondence decay, and can this signal be converted into a principled, content-adaptive temporal sampling strategy?
 
-The central hypothesis is that **nearby frames contain substantial redundant information, but this redundancy progressively decreases as the temporal distance between frames increases**. This project tests that hypothesis quantitatively rather than assuming it.
+## Motivation
 
----
+Video models process sequences containing many highly correlated frames, yet the amount of new temporal information contributed by an additional frame is not uniform.
 
-## What is this project about?
+A fixed sampling rate treats all parts of a video similarly, despite differences in motion, pose change, and scene dynamics.
 
-A video contains many frames, but consecutive frames are not independent observations. For human videos in particular, neighboring frames often depict highly similar visual content.
+This project asks whether temporal redundancy can instead be measured empirically and used to determine when an additional frame is sufficiently informative to retain.
 
-This raises a fundamental question:
+The central hypothesis is:
 
-> **How many frames are actually needed to preserve the temporal information contained in a human video?**
+**Temporal distance → correspondence decay → increasing visual change → adaptive sampling opportunity**
 
-To investigate this, the project builds a five-stage analysis pipeline that moves from basic temporal structure toward motion-aware frame correspondence:
+## Approach
+
+I built a five-stage empirical pipeline to progressively characterize temporal redundancy:
 
 **Temporal Structure → Frame Similarity → Temporal Difference → Motion → Temporal Correspondence**
 
-The goal is to determine **when temporal redundancy breaks down and frame-to-frame correspondence becomes unreliable.**
+The first four stages characterize temporal variation at increasingly specific levels. The final stage tests whether measurable visual correspondence systematically degrades as the temporal gap between frames increases.
 
----
+The correspondence analysis evaluates temporal gaps of **1, 2, 5, and 10 frames** using:
 
-## Five-Stage Analysis
+- Optical-flow magnitude
+- Forward-backward consistency
+- Warping error
+- Valid-flow ratio
+- Human-region motion
+- Human-region correspondence consistency
 
-### 01 — Temporal Structure
+## Preliminary Evidence
 
-Characterize how frames are distributed across videos and establish the temporal sampling structure of the dataset.
+The final correspondence experiment covered:
 
-### 02 — Frame Similarity
+- **552 videos**
+- **110,291 successful frame pairs**
+- **0 failed pairs**
+- Train / validation / test splits
+- **224 × 224** frames
+- Temporal gaps of **1, 2, 5, and 10 frames**
+- Fixed seed: **42**
 
-Measure how visual similarity changes as the temporal distance between frames increases.
+The observed trend is consistent across all three splits.
 
-### 03 — Temporal Difference
+### Train Split
 
-Quantify how much visual information changes between frames at different temporal distances.
+| Temporal Gap | Flow Magnitude | FB Consistency | Warping Error | Human-Region Consistency |
+|-------------:|---------------:|---------------:|--------------:|-------------------------:|
+| 1            | 3.16           | 0.815          | 12.94         | 0.713                    |
+| 2            | 3.84           | 0.761          | 17.31         | 0.638                    |
+| 5            | 4.61           | 0.700          | 23.06         | 0.565                    |
+| 10           | 5.17           | 0.656          | 27.40         | 0.521                    |
 
-### 04 — Motion Analysis
+As temporal distance increases:
 
-Measure temporal motion using optical-flow-based statistics to distinguish visual similarity from actual spatial movement.
+**motion increases → warping error increases → correspondence consistency decreases.**
 
-### 05 — Temporal Correspondence
+The same qualitative behavior is observed when correspondence is evaluated specifically within the human region, indicating that the trend is not attributable solely to background motion.
 
-Test whether visual content can still be reliably mapped between frames using:
+## What the Results Suggest
 
-* Optical flow magnitude
-* Forward-backward consistency
-* Warping error
-* Valid-flow ratio
-* Human-region correspondence
-* Human-region motion
-* Human-region consistency
+The current results provide evidence of a systematic **correspondence decay with increasing temporal distance**.
 
-The final correspondence analysis evaluates temporal distances of **1, 2, 5, and 10 frames**.
+Importantly, the effect is observed across multiple complementary measurements rather than a single similarity metric:
 
----
+**Flow magnitude ↑**  
+**Warping error ↑**  
+**Forward-backward consistency ↓**  
+**Human-region consistency ↓**
 
-## Evidence So Far
+This makes correspondence decay a potentially useful **measurable signal of temporal redundancy**.
 
-The final stage processed:
+However, the current experiment does not yet establish an optimal sampling rule.
 
-* **552 videos**
-* **110,291 successful frame pairs**
-* **0 failed pairs**
-* Train / validation / test splits
-* Temporal distances: **1, 2, 5, 10 frames**
-* Image resolution: **224 × 224**
-* Maximum **50 sampled pairs per video**
-* Fixed seed: **42**
+That leads to the central next question:
 
-The results show a consistent degradation of correspondence as temporal distance increases.
+> When does an additional frame provide enough new information that it should be retained rather than skipped?
 
-### Forward-Backward Correspondence Consistency
+## Core Research Hypothesis
 
-| Temporal distance | Train | Validation |  Test |
-| ----------------: | ----: | ---------: | ----: |
-|                 1 | 0.815 |      0.805 | 0.825 |
-|                 2 | 0.761 |      0.750 | 0.777 |
-|                 5 | 0.700 |      0.674 | 0.719 |
-|                10 | 0.656 |      0.639 | 0.681 |
+I hypothesize that the appropriate temporal sampling interval is **content-dependent rather than fixed**.
 
-**Interpretation:** correspondence consistency decreases monotonically as temporal distance increases.
+A useful sampling criterion may depend on observable video dynamics such as:
 
-### Human-Region Correspondence Consistency
+**Motion → Pose Change → Scene Dynamics → Correspondence Reliability**
 
-| Temporal distance | Train | Validation |  Test |
-| ----------------: | ----: | ---------: | ----: |
-|                 1 | 0.713 |      0.692 | 0.714 |
-|                 2 | 0.638 |      0.615 | 0.642 |
-|                 5 | 0.565 |      0.527 | 0.565 |
-|                10 | 0.521 |      0.499 | 0.519 |
+Rather than prescribing a fixed interval, the goal is to determine whether measurable correspondence decay can identify when the current frame has become sufficiently different from the previously retained frame.
 
-The same pattern appears when correspondence is restricted to the **human region**, suggesting that the observed degradation is not merely caused by background motion.
+## Next Research Step
 
-### Motion and Warping Error
+The next experiment is to connect **correspondence decay** to **marginal information gain**.
 
-Mean flow magnitude increases with temporal distance, while warping error also increases.
+Specifically:
 
-For example, in the training split:
+> Can correspondence-based measurements predict whether retaining an additional frame contributes sufficiently new information to justify its computational cost?
 
-* Flow magnitude: **3.16 → 5.17**
-* Mean warping error: **12.94 → 27.40**
-* Forward-backward consistency: **0.815 → 0.656**
-* Human-region consistency: **0.713 → 0.521**
+If so, correspondence decay could provide the basis for a **content-adaptive temporal sampling criterion**, potentially reducing redundant frames while preserving meaningful temporal dynamics.
 
-from temporal distance **1 → 10 frames**.
+## Current Status
 
-Together, these measurements provide converging evidence that **visual correspondence becomes progressively less reliable as temporal distance increases.**
+**Five-stage empirical pipeline completed.**
 
----
+The current study establishes a reproducible correspondence-decay pattern across temporal distances in a dataset of 552 human videos.
 
-## Key Finding
+The open research problem is now to move from:
 
-The current evidence supports the following empirical conclusion:
+**Measuring redundancy**
 
-> **Temporal redundancy is strongest at short temporal distances, while motion, correspondence error, and correspondence uncertainty increase as the temporal gap grows.**
+to
 
-Importantly, this is not based on a single similarity metric. The same temporal trend appears simultaneously in **motion magnitude, forward-backward consistency, warping error, and human-region correspondence**.
+**Using redundancy to decide what to sample.**
 
-The next research question is therefore not simply whether redundancy exists, but:
-
-> **Can we identify a principled temporal sampling interval beyond which additional frames provide substantially new information rather than redundant observations?**
-
----
-
-## Visual Evidence
-
-### Correspondence Consistency Distribution
-
-![Correspondence consistency distribution](figures/correspondence_consistency_distribution.png)
-
-### Motion Across Temporal Distance
-
-![Correspondence motion by temporal distance](figures/correspondence_motion_by_temporal_distance.png)
-
-### Flow Magnitude Distribution
-
-![Flow magnitude distribution](figures/flow_magnitude_distribution.png)
-
-### Forward-Backward Consistency
-
-![Forward-backward consistency](figures/forward_backward_consistency.png)
-
-### Human-Region Correspondence
-
-![Human correspondence consistency](figures/human_correspondence_consistency.png)
-
-### Video Motion Distribution
-
-![Video motion distribution](figures/video_motion_distribution.png)
-
-### Warping Error Across Temporal Distance
-
-![Warping error by temporal distance](figures/warping_error_by_temporal_distance.png)
-
----
-
-## Reproducibility
-
-The final stage produces frame-level, video-level, and aggregate statistics:
-
-* `correspondence_summary.csv`
-* `correspondence_summary.json`
-* `video_correspondence_statistics.csv`
-* `frame_pair_correspondence_statistics.csv`
-* `correspondence_errors.csv`
-
-The large frame-pair CSV is kept outside version control because of its size.
-
----
-
-## Research Direction
-
-The long-term objective is to move from **measuring temporal redundancy** to **using temporal redundancy to design more efficient video representations and sampling strategies**.
-
-The central research direction is:
-
-**Temporal redundancy → measurable correspondence decay → principled temporal sampling → more efficient video understanding**
-
----
-
-## Project Status
-
-**Five-stage analysis pipeline completed.**
-
-The current results provide quantitative evidence that temporal correspondence systematically degrades with increasing temporal distance in human videos.
-
-The next step is to determine whether these measurements can be converted into a **principled criterion for temporal sampling and redundancy-aware video representation.**
+That transition—from descriptive temporal redundancy to a **principled, content-adaptive sampling rule**—is the main direction I would like to investigate.
