@@ -1,0 +1,27 @@
+{
+  "script": "05_temporal_correspondence.py",
+  "stage": "02_temporal_redundancy / 05_temporal_correspondence",
+  "lags": [
+    1,
+    2,
+    5,
+    10
+  ],
+  "image_size": 224,
+  "sampling_mode": "per_video",
+  "max_pairs_per_video": 50,
+  "fb_threshold": 1.5,
+  "selected_splits": [
+    "train",
+    "val",
+    "test"
+  ],
+  "seed": 42,
+  "videos_available": 552,
+  "videos_processed": 552,
+  "candidate_pairs": 110291,
+  "successful_pairs": 110291,
+  "failed_pairs": 0,
+  "runtime_seconds": 12259.771890878677,
+  "runtime_minutes": 204.32953151464463
+}
