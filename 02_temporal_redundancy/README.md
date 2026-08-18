@@ -154,7 +154,7 @@ The next research question is therefore not simply whether redundancy exists, bu
 
 ### Warping Error Across Temporal Distance
 
-![Warping error by temporal distance](figures/warping_error_by_temporal_distance.png)
+![Warping error by temporal distance](results/05_temporal_correspondence/figures/warping_error_by_temporal_distance.png)
 
 ---
 
